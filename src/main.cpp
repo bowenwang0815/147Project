@@ -1,18 +1,17 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+// Define the analog pin for the soil moisture sensor
+const int soilSensorPin = 36; // Replace 34 with the GPIO pin you connected to
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600); // Initialize Serial Monitor
+  Serial.println("Soil Moisture Sensor Test");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  int sensorValue = analogRead(soilSensorPin); // Read the analog value
+  Serial.print("Soil Moisture Level currently is: ");
+  Serial.println(sensorValue);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  delay(1000); // Wait for 1 second
 }
